@@ -12,4 +12,4 @@ I want to get a *bold* word
     `code i have a code  
     this is a code`  
 ---
-This is a link [use the change](www.baidu.com)
+This is a link [***use the change***](www.baidu.com)
