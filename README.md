@@ -10,5 +10,6 @@ I want to get a *bold* word
 3. list3
     1. list1
     `code i have a code  
-    this is a code`
-    ---
+    this is a code`  
+---
+This is a link [use the change](www.baidu.com)
