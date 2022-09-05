@@ -11,3 +11,4 @@ I want to get a *bold* word
     1. list1
     `code i have a code  
     this is a code`
+    ---
