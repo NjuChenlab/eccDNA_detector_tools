@@ -1,0 +1,63 @@
+#!/bin/bash
+
+delimiterIn="\t"
+delimiterJoin="|"
+delimiterOut="\t"
+
+field1=1
+field2=1
+
+while getopts :1:2:a:i:j:o: opt
+do
+	case $opt in
+	1) field1=$OPTARG
+	   ;;
+	2) field2=$OPTARG
+	   ;;
+	a) unpairParam=$OPTARG
+	   ;;
+	i) delimiterIn=$OPTARG
+	   ;;
+	j) delimiterJoin=$OPTARG
+	   ;;
+	o) delimiterOut=$OPTARG
+	   ;;
+	'?') echo "$0: invalid option -$OPTARG" >&2
+	     echo "Usage: $0 [-i \"delimiter of your input file\"] [-j \"delimiter used by join program\"] [-o \"delimiter uesed to delimiter the output\"] [-1 field1] [-2 fields2] file1 file2" >&2
+	     exit 1
+	     ;;
+	esac
+done
+shift $((OPTIND - 1))
+
+if [ $# -eq 0 ]
+then
+        echo "Please specify the input file to join" >&2
+        exit 1
+fi
+if [ "$1" = "-" ];then
+	file1="/dev/stdin"
+else
+	file1="$1"
+fi
+if [ "$2" = "-" ] || [ "$2" = "" ];then
+	file2="/dev/stdin"
+else
+	file2="$2"
+fi
+
+<<cut
+echo "delimiterIn=$delimiterIn" >/dev/stderr
+echo "delimiterJoin=$delimiterJoin" >/dev/stderr
+echo "delimiterOut=$delimiterOut" >/dev/stderr
+echo "file1=$file1" >/dev/stderr
+echo "field1=$field1" >/dev/stderr
+echo "file2=$file2" >/dev/stderr
+echo "field2=$field2" >/dev/stderr
+cut
+
+if [ "$unpairParam" ];then
+	join -a $unpairParam -1 $field1 -2 $field2 -t $delimiterJoin -i <(tr "$delimiterIn" "$delimiterJoin" <$file1|LC_COLLATE=C sort -f -k$field1,$field1 -t "$delimiterJoin") <(tr "$delimiterIn" "$delimiterJoin" <$file2|LC_COLLATE=C sort -f -k$field2,$field2 -t "$delimiterJoin") |tr $delimiterJoin $delimiterOut
+else
+	join -1 $field1 -2 $field2 -t $delimiterJoin -i <(tr "$delimiterIn" "$delimiterJoin" <$file1|LC_COLLATE=C sort -f -k$field1,$field1 -t "$delimiterJoin") <(tr "$delimiterIn" "$delimiterJoin" <$file2|LC_COLLATE=C sort -f -k$field2,$field2 -t "$delimiterJoin") |tr $delimiterJoin $delimiterOut
+fi
