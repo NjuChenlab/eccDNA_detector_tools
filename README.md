@@ -36,5 +36,10 @@ Dependencies:
   SeqPrep; samblaster v0.1.25; bwa v0.7.17-r1188; samtools v1.3.1
 
 ```
+The output dir contain four type files
+```
+output_prefix.pe.disc.bam  output_prefix.pe.rmdup.bam  output_prefix.pe.split.bam  output_prefix.se.bam  output_prefix.se.rmdup.bam
+```
+
 ### step2  
 ### step3
