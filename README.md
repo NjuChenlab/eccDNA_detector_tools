@@ -64,5 +64,13 @@ The output dir contain 7 files
 ```
 output_prefix.eccDNA  output_prefix.cov  output_prefix.bed  output_prefix.eccDNA+reads  output_prefix.id.passed  output_prefix.lconf.out  output_prefix.bks.indi
 ```
-### step3 Generate bigwig file
+### step3 Generate bigwig file  
+```
+bed2bw_notscaled.sh output_prefix.bed output_prefix genome.size
+option:  
+$1 The .bed file in the step2 output dir
+$2 The output bigwig prefix
+$3 The genome size
+
+```
 
