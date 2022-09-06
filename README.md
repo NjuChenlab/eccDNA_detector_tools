@@ -3,7 +3,15 @@
 ## Introduction  
 ## Installation  
 software  |version
-|---  |---|
+|:---:  |:---:|
+|  |  |
+|  |  |
+|  |  |
+|  |  |
+|  |  |
+|  |  |
+|  |  |
+|  |  |
 |  |  |
 ## Usage  
 ### step1  
