@@ -68,6 +68,7 @@ output_prefix.eccDNA  output_prefix.cov  output_prefix.bed  output_prefix.eccDNA
 ```
 bed2bw_notscaled.sh output_prefix.bed output_prefix genome.size
 Options:  
+
 $1 The .bed file in the step2 output dir
 $2 The output bigwig prefix
 $3 The genome size
