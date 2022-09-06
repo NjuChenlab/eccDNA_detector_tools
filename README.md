@@ -57,5 +57,5 @@ Options:
   -h|--help
 Dependencies:
   samtools; bedtools
-``
+```  
 ### step3
