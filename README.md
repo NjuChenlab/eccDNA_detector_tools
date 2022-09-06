@@ -3,7 +3,7 @@
 ## Introduction  
 ## Installation  
 In order to utilize the eccDNA detector tool, you must first download the package listed in the table. We recommend using conda to install.  
-**Source code dependence**  
+Following list was the detailed dependence:
 software  |version
 |:---:  |:---:|
 |SeqPrep|v. 1.2  |
