@@ -19,7 +19,7 @@ export PATH=$PATH:/home/username/eccDNA_detector_tools/
 source ~/.bashrc  
 ```
 ## Usage  
-### step1 mapping  
+### step1 Mapping  
 ```
 mapping.sh -1 read1.fq.gz -2 read2.fq.gz  -i bwa_genome_index -o out_dir -p output_prefix -t 12  
 Usage: mapping.sh Options
