@@ -19,5 +19,22 @@ source ~/.bashrc
 ```
 ## Usage  
 ### step1  
+```
+mapping.sh -1 read1.fq.gz -2 read2.fq.gz  -i bwa_genome_index -o out_dir -p output_prefix -t 12  
+Usage: mapping.sh Options
+Options:
+  -1|--r1           PATH    read 1 in fastq(.gz) format
+  -2|--r2           PATH    read 2 in fastq(.gz) format
+  -a|--adaptor      CHAR    3' adapter to be removed from read 1 in a pair [AGATCGGAAGAGCACACGTC]
+  -A|--ADAPTOR      CHAR    3' adapter to be removed from read 2 in a pair [AGATCGGAAGAGCGTCGTGT]
+  -i|--index        PREFIX  BWA Index prefix
+  -o|--outDir       PATH    Output directory [./]
+  -p|--prefix       CHAR    prefix of output files [out]
+  -t|--thread       INT     The thread number [1]
+  -h|--help
+Dependencies:
+  SeqPrep; samblaster v0.1.25; bwa v0.7.17-r1188; samtools v1.3.1
+
+```
 ### step2  
 ### step3
