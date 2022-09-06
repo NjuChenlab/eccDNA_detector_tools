@@ -41,5 +41,21 @@ The output dir contain four type files
 output_prefix.pe.disc.bam  output_prefix.pe.rmdup.bam  output_prefix.pe.split.bam  output_prefix.se.bam  output_prefix.se.rmdup.bam
 ```
 
-### step2  
+### step2  Detecting  
+```
+detector.sh -i output_prefix -g genome.fa -s genome.size -o outputdir  
+Usage: detector.sh Options
+Options:
+  -i|--input        BASE    prefix of the mapping.sh output
+  -q|--mapq         INT     min mapping quality [20]
+  -v|--overhang     INT     min length of overhangs beyond homology regions for lconf split reads detection [10]
+  -g|--genome       FILE    genome sequence in fasta format
+  -s|--size         FILE    text file for chromosome sizes
+  -d|--distance     INT     max distance between 2 properly-paired / discordant reads [500]
+  -l|--largest      INT     candidate eccDNA larger than [-l|--largest] will be disgarded [5000000]
+  -o|--outDir       PATH    Output directory [./]
+  -h|--help
+Dependencies:
+  samtools; bedtools
+``
 ### step3
