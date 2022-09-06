@@ -2,6 +2,7 @@
 ![advantage of this method](image/advantage.png)
 ## Introduction  
 ## Installation  
+**Source code dependence**
 software  |version
 |:---:  |:---:|
 |SeqPrep|v. 1.2  |
