@@ -59,4 +59,8 @@ Options:
 Dependencies:
   samtools; bedtools
 ```  
+The output dir contain 7 files  
+```
+output_prefix.eccDNA  output_prefix.cov  output_prefix.bed  output_prefix.eccDNA+reads  output_prefix.id.passed  output_prefix.lconf.out  output_prefix.bks.indi
+```
 ### step3
