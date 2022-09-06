@@ -1,5 +1,5 @@
 # eccDNA_detector_tools
-## Install  
+## Installation  
 ## Usage  
 ### step1  
 ### step2  
