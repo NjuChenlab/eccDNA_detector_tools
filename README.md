@@ -16,6 +16,7 @@ software  |version
 Then, you need to add the tool to your path.  
 ```
 export PATH=$PATH:/home/username/eccDNA_detector_tools/  
+export PATH=$PATH:/home/username/eccDNA_detector_tools/scripts  
 source ~/.bashrc  
 ```
 ## Usage  
