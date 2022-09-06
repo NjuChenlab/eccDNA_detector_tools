@@ -2,7 +2,7 @@
 ![advantage of this method](image/advantage.png)
 ## Introduction  
 ## Installation  
-1. In order to utilize the eccDNA detector tool, you must first download the package listed in the table. We recommend using conda to install.  
+In order to utilize the eccDNA detector tool, you must first download the package listed in the table. We recommend using conda to install.  
 **Source code dependence**  
 software  |version
 |:---:  |:---:|
