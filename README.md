@@ -77,12 +77,8 @@ The output of the output_prefix.high:
 chr|start | end | id  | offset | hconf_split | lconf_split | disc | coverage(0-1) | cov(RPK) | cov_upstream(RPK) | cov_downstream(RPK)
 |:---:  |:---:|:---:  |:---:|:---:  |:---:|:---:  |:---:|:---:  |:---:|:---:  |:---:|
 chr1 | 3185944 | 3186389|3 | 2  |12  |4  |3   | 1  | 85.0112 |0     | 2.24719
-chr1    3640088 3641015 7       2       4       1       1       1       51.6685 0       0
-chr1    4995630 4995934 17      0       12      2       0       1       52.6316 0       0
-chr1    6874001 6874433 30      0       38      56      25      1       490.741 2.31481 2.31481
-chr1    10868069        10868594        58      1       4       1       0       1       17.1103 0       0
-chr1    11799435        11799570        66      0       1       0       1       1       44407.4 0       0
-chr1    11799436        11799571        67      0       3778    920     3       1       44407.4 0       0
+chr1  | 3640088 | 3641015 | 7 | 2 | 4  | 1 | 1 | 1 | 51.6685 |0 |0
+chr1 | 4995630 | 4995934 | 17 |  0  | 12   | 2  | 0  | 1  |  52.6316 | 0  |  0
 ### step4 Generate bigwig file  
 ```
 bed2bw_notscaled.sh output_prefix.bed output_prefix genome.size
