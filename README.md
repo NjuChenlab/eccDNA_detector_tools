@@ -1,7 +1,7 @@
 # eccDNA_detector_tools  
 ![advantage of this method](image/advantage.png)
 ## Introduction  
-We developed a nucleotide-resolution eccDNA detection pipeline on the basis of previous efforts (Kumar et al., 2017; Moller et al., 2018). Briefly, SeqPrep (https://github.com/jstjohn/SeqPrep) was used to trim adapter sequences and merge the overlapping paired-end reads into singleton long reads, followed by reads mapping to GRCm38 reference genome using BWA MEM version 0.7.17-r1188 (Li and Durbin, 2009) Samblaster version 0.1.26 (Faust and Hall, 2014) or an in-house Perl script was used to remove PCR duplicates and separate alignments into split reads, discordant and concordant reads. Candidate eccDNAs are firstly identified based on split reads (high-confidence ones). When homologous sequences are present at eccDNA ends, we recorded the coordinates of the leftmost form of eccDNA and an offset corresponding to the length of homologous sequences to represent all possible eccDNA variants. Potential split reads that failed to be mapped as split reads in the first place (low-confidence ones) as well as discordant reads were identified and counted using in-house Perl scripts. The average coverages (in terms of RPK) for candidate eccDNAs and surrounding regions were then calculated based on all different type of reads. Any eccDNA supported by at least two high-confidence split reads or discordant reads, with its 95% region covered by at least one read, and with its average coverage twice of that of its surrounding region, is considered as a high-confidence eccDNA. 
+We developed a nucleotide-resolution eccDNA detection pipeline on the basis of previous efforts (Kumar et al., 2017; Moller et al., 2018). Briefly, SeqPrep (https://github.com/jstjohn/SeqPrep) was used to trim adapter sequences and merge the overlapping paired-end reads into singleton long reads, followed by reads mapping to GRCm38 reference genome using BWA MEM, Samblaster or an in-house Perl script was used to remove PCR duplicates and separate alignments into split reads, discordant and concordant reads. Candidate eccDNAs are firstly identified based on split reads (high-confidence ones). When homologous sequences are present at eccDNA ends, we recorded the coordinates of the leftmost form of eccDNA and an offset corresponding to the length of homologous sequences to represent all possible eccDNA variants. Potential split reads that failed to be mapped as split reads in the first place (low-confidence ones) as well as discordant reads were identified and counted using in-house Perl scripts. The average coverages (in terms of RPK) for candidate eccDNAs and surrounding regions were then calculated based on all different type of reads. Any eccDNA supported by at least two high-confidence split reads or discordant reads, with its 95% region covered by at least one read, and with its average coverage twice of that of its surrounding region, is considered as a high-confidence eccDNA. 
 
 
 Kumar, P., Dillon, L.W., Shibata, Y., Jazaeri, A.A., Jones, D.R., and Dutta, A. (2017). Normal and Cancerous Tissues Release Extrachromosomal Circular DNA (eccDNA) into the Circulation. Mol Cancer Res 15, 1197-1205.  
@@ -69,11 +69,19 @@ The output dir contain 7 files
 ```
 output_prefix.eccDNA  output_prefix.cov  output_prefix.bed  output_prefix.eccDNA+reads  output_prefix.id.passed  output_prefix.lconf.out  output_prefix.bks.indi
 ```
-### step3 filter the high confident eccDNA
+### step3 Filter the high confident eccDNA
 ```
 cat output_prefix.eccDNA |sed '/chrM/d'|awk 'BEGIN{OFS="\t"}($6+$8)>=2&&$9>=0.95&&$10>=2*($11+$12){print $0}'|bedtools intersect -a - -b blacklist.bed -v > output_prefix.high
 ```
-
+The output of the output_prefix.high:  
+|:---:  |:---:|:---:  |:---:|:---:  |:---:|:---:  |:---:|:---:  |:---:|:---:  |:---:|
+chr1 | 3185944 | 3186389|3 | 2  |12  |4  |3   | 1  | 85.0112 |0     | 2.24719
+chr1    3640088 3641015 7       2       4       1       1       1       51.6685 0       0
+chr1    4995630 4995934 17      0       12      2       0       1       52.6316 0       0
+chr1    6874001 6874433 30      0       38      56      25      1       490.741 2.31481 2.31481
+chr1    10868069        10868594        58      1       4       1       0       1       17.1103 0       0
+chr1    11799435        11799570        66      0       1       0       1       1       44407.4 0       0
+chr1    11799436        11799571        67      0       3778    920     3       1       44407.4 0       0
 ### step4 Generate bigwig file  
 ```
 bed2bw_notscaled.sh output_prefix.bed output_prefix genome.size
