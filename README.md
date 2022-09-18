@@ -69,11 +69,12 @@ The output dir contain 7 files
 ```
 output_prefix.eccDNA  output_prefix.cov  output_prefix.bed  output_prefix.eccDNA+reads  output_prefix.id.passed  output_prefix.lconf.out  output_prefix.bks.indi
 ```
-### step3 Filter the high confident eccDNA
+### step3 Filter high-confidence eccDNA
 ```
 cat output_prefix.eccDNA |sed '/chrM/d'|awk 'BEGIN{OFS="\t"}($6+$8)>=2&&$9>=0.95&&$10>=2*($11+$12){print $0}'|bedtools intersect -a - -b blacklist.bed -v > output_prefix.high
 ```
 The output of the output_prefix.high:  
+chr|start | end | id  | offset | hconf_split | lconf_split | disc | coverage(0-1) | cov(RPK) | cov_upstream(RPK) | cov_downstream(RPK)
 |:---:  |:---:|:---:  |:---:|:---:  |:---:|:---:  |:---:|:---:  |:---:|:---:  |:---:|
 chr1 | 3185944 | 3186389|3 | 2  |12  |4  |3   | 1  | 85.0112 |0     | 2.24719
 chr1    3640088 3641015 7       2       4       1       1       1       51.6685 0       0
