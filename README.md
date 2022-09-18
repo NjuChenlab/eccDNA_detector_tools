@@ -69,7 +69,12 @@ The output dir contain 7 files
 ```
 output_prefix.eccDNA  output_prefix.cov  output_prefix.bed  output_prefix.eccDNA+reads  output_prefix.id.passed  output_prefix.lconf.out  output_prefix.bks.indi
 ```
-### step3 Generate bigwig file  
+### step3 filter the high confident eccDNA
+```
+cat output_prefix.eccDNA |sed '/chrM/d'|awk 'BEGIN{OFS="\t"}($6+$8)>=2&&$9>=0.95&&$10>=2*($11+$12){print $0}'|bedtools intersect -a - -b blacklist.bed -v > output_prefix.high
+```
+
+### step4 Generate bigwig file  
 ```
 bed2bw_notscaled.sh output_prefix.bed output_prefix genome.size
 
