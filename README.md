@@ -8,8 +8,7 @@ We developed a nucleotide-resolution eccDNA detection pipeline on the basis of p
 *Moller, H.D., Mohiyuddin, M., Prada-Luengo, I., Sailani, M.R., Halling, J.F., Plomgaard, P., Maretty, L., Hansen, A.J., Snyder, M.P., Pilegaard, H., et al. (2018). Circular DNA elements of chromosomal origin are common in healthy human somatic tissue. Nat Commun 9, 1069.*  
 
 ## Installation  
-In order to utilize the eccDNA detector tool, you must first download the package listed in the table. We recommend using conda to install.  
-Following list was the detailed dependence:
+Install all dependencies  
 software  |version
 |:---:  |:---:|
 |SeqPrep|v. 1.2  |
@@ -18,7 +17,7 @@ software  |version
 |samtools  | v. 1.7 |
 | bedtools |v. 2.30.0  |  
 
-Then, you need to add the tool to your path.  
+Add the eccDNA detector tool to your PATH.  
 ```
 export PATH=$PATH:/home/username/eccDNA_detector_tools/  
 export PATH=$PATH:/home/username/eccDNA_detector_tools/scripts  
