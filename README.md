@@ -3,9 +3,15 @@
 ## Introduction  
 We developed a nucleotide-resolution eccDNA detection pipeline on the basis of previous efforts (Kumar et al., 2017; Moller et al., 2018). Briefly, SeqPrep (https://github.com/jstjohn/SeqPrep) was used to trim adapter sequences and merge the overlapping paired-end reads into singleton long reads, followed by reads mapping to GRCm38 reference genome using BWA MEM, Samblaster or an in-house Perl script was used to remove PCR duplicates and separate alignments into split reads, discordant and concordant reads. Candidate eccDNAs are firstly identified based on split reads (high-confidence ones). When homologous sequences are present at eccDNA ends, we recorded the coordinates of the leftmost form of eccDNA and an offset corresponding to the length of homologous sequences to represent all possible eccDNA variants. Potential split reads that failed to be mapped as split reads in the first place (low-confidence ones) as well as discordant reads were identified and counted using in-house Perl scripts. The average coverages (in terms of RPK) for candidate eccDNAs and surrounding regions were then calculated based on all different type of reads. Any eccDNA supported by at least two high-confidence split reads or discordant reads, with its 95% region covered by at least one read, and with its average coverage twice of that of its surrounding region, is considered as a high-confidence eccDNA. 
 
-
 *Kumar, P., Dillon, L.W., Shibata, Y., Jazaeri, A.A., Jones, D.R., and Dutta, A. (2017). Normal and Cancerous Tissues Release Extrachromosomal Circular DNA (eccDNA) into the Circulation. Mol Cancer Res 15, 1197-1205.*  
 *Moller, H.D., Mohiyuddin, M., Prada-Luengo, I., Sailani, M.R., Halling, J.F., Plomgaard, P., Maretty, L., Hansen, A.J., Snyder, M.P., Pilegaard, H., et al. (2018). Circular DNA elements of chromosomal origin are common in healthy human somatic tissue. Nat Commun 9, 1069.*  
+
+## Citing
+For more information look at the publication at https://elifesciences.org/articles/87115  
+
+**Jun Hu, Zhe Zhang, Sai Xiao, Yalei Cao, Yinghong Chen, Jiaming Weng, Hui Jiang, Wei Li, Jia-Yu Chen, Chao Liu (2023) Microhomology-mediated circular DNA formation from oligonucleosomal fragments during spermatogenesis eLife 12:RP87115**  
+
+Thank you for citing the publication if eccDNA_detector_tools helps in your research.
 
 ## Installation  
 Install all dependencies  
